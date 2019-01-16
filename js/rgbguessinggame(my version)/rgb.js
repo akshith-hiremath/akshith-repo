@@ -22,6 +22,7 @@ var colors = [];
 var chosen;
 var playing;
 function reset(){
+    document.getElementById("title").style.backgroundColor = "lightblue";
     squares.forEach(square => {
         square.classList.remove("fadein");
         square.classList.remove("fadeout");
@@ -59,7 +60,7 @@ function play() {
 
     colors = [];
     addColors();
-    chosen = Math.floor(Math.random() * 6);
+    chosen = Math.floor(Math.random() * squares.length);
     document.getElementById("clue").textContent = colors[chosen];
     colors.forEach(function (color, index) {
         squares[index].style.backgroundColor = color;
@@ -74,13 +75,17 @@ function play() {
             if (playing) {
                 if (element.id === "correct") {
                     correct.play();
+                    squares.forEach(square => {
+                        square.style.backgroundColor = element.style.backgroundColor;
+                        document.getElementById("title").style.backgroundColor = element.style.backgroundColor;
+                    })
                     playing = false;
                     colors = [];
                 } else {
                     element.classList.add("fadeout");
                     setTimeout(function () {
                         element.style.backgroundColor = "white";
-                    }, 999);
+                    }, 490);
 
                 }
             }

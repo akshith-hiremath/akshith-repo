@@ -9,7 +9,7 @@
 }
 .fadein{
     animation-name: fadein;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
 }
 @keyframes fadein{
@@ -43,10 +43,11 @@
     padding:2rem;
     font-size: 30px;
     font-family: cursive;
+    background-color: lightblue;
 }
 .fadeout {
     animation-name: fadeout;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
 }
 
