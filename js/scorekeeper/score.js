@@ -6,30 +6,39 @@ var playinglimit = 5;
 var player1win = false;
 var player2win = false;
 var playing = true;
-function displayScore(){
+
+function displayScore() {
     player1text.innerHTML = "Player 1: <span class=\"font-weight-bold\"> " + player1score + "</span>";
     player2text.innerHTML = "Player 1: <span class=\"font-weight-bold\"> " + player2score + "</span>";
 }
-function win(player){
-    if(player===1){
+
+function win(player) {
+    if (player === 1) {
         document.getElementById("player1score").classList.add("won");
-    }
-    else if(player === 2){
+    } else if (player === 2) {
         document.getElementById("player2score").classList.add("won");
     }
 }
-function reset(){
+
+function reset() {
     player1score = 0;
-    player2score = 0;            
+    player2score = 0;
     displayScore();
 }
 window.onload = function () {
     document.getElementById("playingto").addEventListener("change", function () {
         if (playing) {
-            document.getElementById("playinglimitdisplay").textContent = document.getElementById("playingto").value;
-            playinglimit = parseInt(document.getElementById("playingto").value);
-            console.log(playinglimit);
-            reset();
+            if (document.getElementById("playingto").value < 1) {
+                document.getElementById("playinglimitdisplay").textContent = "1";
+                document.getElementById("playingto").value = 1;
+                playinglimit = parseInt("1");
+                reset();
+            } else {
+                document.getElementById("playinglimitdisplay").textContent = document.getElementById("playingto").value;
+                playinglimit = parseInt(document.getElementById("playingto").value);
+                console.log(playinglimit);
+                reset();
+            }
         }
     })
     document.getElementById("reset").addEventListener("click", function () {
